@@ -6,6 +6,7 @@ import { Cliente } from './cliente/entities/cliente.entity';
 import { ClienteModule } from './cliente/cliente.module';
 import { VehiculoModule } from './vehiculo/vehiculo.module';
 import { Vehiculo } from './vehiculo/entities/vehiculo.entity';
+import { ReservaModule } from './reserva/reserva.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { Vehiculo } from './vehiculo/entities/vehiculo.entity';
     }),
     ClienteModule,
     VehiculoModule,
+    ReservaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

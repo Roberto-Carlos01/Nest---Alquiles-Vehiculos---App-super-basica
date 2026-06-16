@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Reserva } from 'src/reserva/entities/reserva.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'vehiculo' })
 export class Vehiculo {
@@ -24,4 +25,7 @@ export class Vehiculo {
   descripcion?: string;
   @Column({ default: true })
   disponible!: boolean;
+
+  @OneToMany(() => Reserva, (reserva) => reserva.vehiculo)
+  reservas!: Reserva[];
 }
