@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cliente } from './cliente/entities/cliente.entity';
 import { ClienteModule } from './cliente/cliente.module';
+import { VehiculoModule } from './vehiculo/vehiculo.module';
+import { Vehiculo } from './vehiculo/entities/vehiculo.entity';
 
 @Module({
   imports: [
@@ -14,11 +16,12 @@ import { ClienteModule } from './cliente/cliente.module';
       username: 'root',
       password: '',
       database: 'alquiler_vehiculos',
-      entities: [Cliente],
+      entities: [Cliente, Vehiculo],
       synchronize: false, // SOLO en dev / prototipo
       // logging: true,
     }),
     ClienteModule,
+    VehiculoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -30,3 +30,84 @@ Content-Type: application/json
 
 ### Eliminar un cliente
 DELETE http://localhost:3000/clientes/3
+
+### -----------------------------------------------------------
+### Todos los vehiculo
+GET http://localhost:3000/vehiculos
+
+### Obtener a un vehiculo por ID
+GET http://localhost:3000/vehiculos/5
+
+### Crear un vehiculo
+POST http://localhost:3000/vehiculos
+Content-Type: application/json
+
+{
+    "marca": "Toyota",
+    "modelo": "Hilux",
+    "anio": 2025,
+    "precioDia": "80.00",
+    "placa": "9012-ABI",
+    "color": "Negro",
+    "foto": "hilux.jpg",
+    "descripcion": "Ideal para todo terreno",
+    "disponible": true
+}
+
+### Modificar un vehiculo
+PUT http://localhost:3000/vehiculos/5
+Content-Type: application/json
+
+{
+    "marca": "Toyota",
+    "modelo": "Hilux Moderno",
+    "anio": 2026,
+    "precioDia": "80.00",
+    "placa": "9012-ABI",
+    "color": "Negro",
+    "foto": "hilux.jpg",
+    "descripcion": "Ideal para todo terreno",
+    "disponible": true
+}
+
+### Eliminar un vehiculo
+DELETE http://localhost:3000/vehiculos/4
+
+### Obtener historial de resrevas con detalles de cliente  y vehiculo
+GET http://localhost:5005/reservas
+
+### Obtener un historial de reserva por ID
+GET http://localhost:5005/reservas/1
+
+### Crear una nueva reserva
+POST http://localhost:5005/reservas
+Content-Type: application/json
+
+{
+    "fechaIni": "2023-10-01",
+    "fechaFin": "2023-10-05",
+    "total": "400.00",
+    "estado": "pendiente",
+    "ciCliente": "1234567 LP",
+    "placaVehiculo": "9012-GHI"
+}
+
+### Modificar una reserva
+PUT http://localhost:5005/reservas/3
+Content-Type: application/json
+
+{
+    "fechaIni": "2023-10-01",
+    "fechaFin": "2023-10-04",
+    "total": "380.00",
+    "estado": "pendiente",
+    "ciCliente": "1234567 LP",
+    "placaVehiculo": "9012-GHI"
+}
+
+### Eliminar una reservar
+DELETE http://localhost:5005/reservas/5
+
+### Obtener el historial de reservas de un cliente
+GET http://localhost:5005/clientes/historial/1
+ 
