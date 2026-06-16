@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cliente } from './cliente/entities/cliente.entity';
+import { ClienteModule } from './cliente/cliente.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { Cliente } from './cliente/entities/cliente.entity';
       synchronize: false, // SOLO en dev / prototipo
       // logging: true,
     }),
-    //otros modulos
+    ClienteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
