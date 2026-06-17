@@ -16,6 +16,9 @@ export class ClienteService {
     // retorna solo el cliente con ese id
     return await this.clienteRepository.findOne({ where: { idcliente: id } });
   }
+  async getClienteForCi(ci: string) {
+    return await this.clienteRepository.findOne({ where: { ci: ci } });
+  }
   async createCliente(clienteData: Partial<Cliente>) {
     //retorna un objeto cliente creado
     const newCliente = this.clienteRepository.create(clienteData);

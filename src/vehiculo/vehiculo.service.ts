@@ -21,6 +21,9 @@ export class VehiculoService {
   async findOne(id: number) {
     return await this.vehiculoRepository.findOne({ where: { idvehiculo: id } });
   }
+  async findOneByPlaca(placa: string) {
+    return await this.vehiculoRepository.findOne({ where: { placa: placa } });
+  }
 
   async update(id: number, vehiculoData: Partial<Vehiculo>) {
     await this.vehiculoRepository.update(id, vehiculoData);

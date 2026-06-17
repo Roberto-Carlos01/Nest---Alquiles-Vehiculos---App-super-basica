@@ -7,6 +7,7 @@ import { ClienteModule } from './cliente/cliente.module';
 import { VehiculoModule } from './vehiculo/vehiculo.module';
 import { Vehiculo } from './vehiculo/entities/vehiculo.entity';
 import { ReservaModule } from './reserva/reserva.module';
+import { Reserva } from './reserva/entities/reserva.entity';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { ReservaModule } from './reserva/reserva.module';
       username: 'root',
       password: '',
       database: 'alquiler_vehiculos',
-      entities: [Cliente, Vehiculo],
+      entities: [Cliente, Vehiculo, Reserva],
       synchronize: false, // SOLO en dev / prototipo
       // logging: true,
     }),

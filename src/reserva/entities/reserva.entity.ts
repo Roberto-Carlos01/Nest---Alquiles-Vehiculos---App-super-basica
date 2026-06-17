@@ -24,7 +24,7 @@ export class Reserva {
 
   @Column({
     type: 'enum',
-    enum: ['pendiente', 'confirmada', 'cancelada', 'finalda'],
+    enum: ['pendiente', 'confirmada', 'cancelada', 'finalizada'],
     default: 'pendiente',
   })
   estado!: string;
