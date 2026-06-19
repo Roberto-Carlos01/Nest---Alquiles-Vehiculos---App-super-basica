@@ -32,16 +32,25 @@ export class ReservaService {
   }
 
   async findAll() {
-    return await this.reservaRepository.find({
+    const reservas = await this.reservaRepository.find({
       relations: { cliente: true, vehiculo: true },
     });
+    const reservasWithDays = reservas.map((reserva) => ({
+      ...reserva,
+      dias: contadorDays(reserva.fechaIni, reserva.fechaFin),
+    }));
+    return reservasWithDays;
   }
 
   async findOne(id: number) {
-    return await this.reservaRepository.findOne({
+    const reserva = await this.reservaRepository.findOne({
       where: { idreserva: id },
       relations: { cliente: true, vehiculo: true },
     });
+    if (!reserva) return null;
+    const dias = contadorDays(reserva.fechaIni, reserva.fechaFin);
+    const reservaDays = { ...reserva, dias };
+    return reservaDays;
   }
 
   async update(id: number, data: any) {
@@ -65,5 +74,15 @@ export class ReservaService {
 
   async remove(id: number) {
     return this.reservaRepository.delete(id);
+  }
+}
+function contadorDays(fechaIni, fechaFin) {
+  try {
+    const inicio = new Date(fechaIni);
+    const fin = new Date(fechaFin);
+    return (fin.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24);
+  } catch (error) {
+    console.error('❌ Error al calcular días de reserva:', error);
+    throw error;
   }
 }

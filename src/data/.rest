@@ -78,7 +78,7 @@ DELETE http://localhost:3000/vehiculos/4
 GET http://localhost:3000/reserva
 
 ### Obtener un historial de reserva por ID
-GET http://localhost:3000/reserva/6
+GET http://localhost:3000/reserva/7
 
 ### Crear una nueva reserva
 POST http://localhost:3000/reserva
@@ -86,21 +86,21 @@ Content-Type: application/json
 
 {
     "fechaIni": "2023-10-01",
-    "fechaFin": "2023-10-06",
+    "fechaFin": "2023-10-11",
     "total": "400.00",
     "estado": "pendiente",
-    "ciCliente": "1234567 LP",
+    "ciCliente": "8948359 LP",
     "placaVehiculo": "9012-GHI"
 }
 
 ### Modificar una reserva
-PUT http://localhost:3000/reserva/6
+PUT http://localhost:3000/reserva/7
 Content-Type: application/json
 
 {
     "fechaIni": "2023-10-01",
-    "fechaFin": "2023-10-04",
-    "total": "380.00",
+    "fechaFin": "2023-10-011",
+    "total": "500.00",
     "estado": "pendiente",
     "ciCliente": "8948359 LP",
     "placaVehiculo": "9012-GHI"
@@ -110,5 +110,5 @@ Content-Type: application/json
 DELETE http://localhost:3000/reserva/5
 
 ### Obtener el historial de reservas de un cliente
-GET http://localhost:3000/clientes/historial/1
+GET http://localhost:3000/clientes/historial/5
  

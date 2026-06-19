@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cliente } from './entities/cliente.entity';
@@ -35,5 +36,12 @@ export class ClienteService {
   async deleteCliente(id: number) {
     //Retorna un objeto especial que nos indica los resultados del delete
     return this.clienteRepository.delete(id);
+  }
+  async getHistorialCliente(id: number) {
+    const historial = this.clienteRepository.query(
+      'SELECT r.fechaIni AS inicio, r.fechaFin AS fin , r.total , r.estado AS estado_reserva , c.nombre , c.apellido , v.marca , v.modelo, v.color FROM reserva r JOIN cliente c ON c.idcliente= r.idcliente JOIN vehiculo v ON v.idvehiculo = r.idvehiculo WHERE c.idcliente = ? ORDER BY r.fechaIni DESC',
+      [id],
+    );
+    return historial;
   }
 }

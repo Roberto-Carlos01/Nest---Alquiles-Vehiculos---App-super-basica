@@ -38,4 +38,9 @@ export class ClienteController {
   eliminarCliente(@Param('id', ParseIntPipe) id: number) {
     return this.clienteService.deleteCliente(id);
   }
+
+  @Get('/historial/:id')
+  obtenerHistorialCliente(@Param('id', ParseIntPipe) id: number) {
+    return this.clienteService.getHistorialCliente(id);
+  }
 }
