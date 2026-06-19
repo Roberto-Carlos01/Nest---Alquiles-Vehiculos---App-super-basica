@@ -9,6 +9,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
+import { CreateClienteDto } from './dto/create-cliente.dto';
 
 @Controller('clientes')
 export class ClienteController {
@@ -25,7 +26,7 @@ export class ClienteController {
   }
 
   @Post()
-  crearCliente(@Body() data: any) {
+  crearCliente(@Body() data: CreateClienteDto) {
     return this.clienteService.createCliente(data);
   }
 
